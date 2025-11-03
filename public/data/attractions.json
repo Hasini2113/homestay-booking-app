@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Old Fort",
+    "description": "Historic fort with guided tours.",
+    "distance": 2.1
+  },
+  {
+    "id": 2,
+    "name": "Riverfront Market",
+    "description": "Local market with food stalls and crafts.",
+    "distance": 1.2
+  },
+  {
+    "id": 3,
+    "name": "Sunset Point",
+    "description": "Popular viewpoint for sunsets.",
+    "distance": 5.4
+  }
+]
