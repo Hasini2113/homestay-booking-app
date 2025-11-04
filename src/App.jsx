@@ -21,7 +21,6 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import { AppContext } from "./context/AppContext";
 import { useAuth } from "./context/AuthContext";
-
 import loginBg from "./assets/loginbackground.jpg";
 import mainBg from "./assets/mainbackground.jpg";
 
@@ -145,6 +144,8 @@ export default function App() {
                     path="/admin"
                     element={<ProtectedRoute element={<Admin />} allowedRole="admin" />}
                   />
+                  
+
 
                   {/* 🚫 Redirect logged-in users away from auth pages */}
                   <Route path="/login" element={<Navigate to="/" replace />} />
@@ -154,6 +155,7 @@ export default function App() {
                     element={<Navigate to="/" replace />}
                   />
                   <Route path="*" element={<Navigate to="/" replace />} />
+      
                 </>
               )}
             </Routes>

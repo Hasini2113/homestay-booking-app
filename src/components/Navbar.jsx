@@ -6,6 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useContext } from 'react';
 import { AppContext } from '../context/AppContext'; // dark mode, etc.
 import { useAuth } from '../context/AuthContext';
+import { Link } from "react-router-dom";
 
 export default function Navbar(){
   const { state, dispatch } = useContext(AppContext);
@@ -16,6 +17,7 @@ export default function Navbar(){
     return (
       <AppBar position="static">
         <Toolbar>
+
           <IconButton edge="start" color="inherit" sx={{mr:2}}>
             <MenuIcon />
           </IconButton>
@@ -42,6 +44,7 @@ export default function Navbar(){
         <Button color="inherit" component={RouterLink} to="/host">Host</Button>
         <Button color="inherit" component={RouterLink} to="/booking">Bookings</Button>
         <Button color="inherit" component={RouterLink} to="/admin">Admin</Button>
+        
 
         <Switch checked={state.darkMode} onChange={()=>dispatch({type:'TOGGLE_DARK'})} />
 

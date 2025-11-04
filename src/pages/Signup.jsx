@@ -1,7 +1,21 @@
+// src/pages/Signup.jsx
 import React, { useState } from "react";
-import { Box, TextField, Button, Typography, Paper, Alert, Link } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  Alert,
+  Link,
+} from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import app from "../firebase"; // your initialized firebase app
+
+const db = getFirestore(app);
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -15,26 +29,45 @@ export default function Signup() {
     e.preventDefault();
     setError("");
 
+    // Basic validations
     if (!email || !password || !confirmPassword)
       return setError("Please fill in all fields");
 
     if (password !== confirmPassword)
       return setError("Passwords do not match");
 
-    // 🚫 Restrict admin and host from signing up
-    if (email.includes("admin") || email.includes("host")) {
+    // Disallow admin/host from signing up via UI
+    const lower = email.toLowerCase();
+    if (lower.includes("admin") || lower.includes("host")) {
       return setError("Admins and Hosts cannot sign up. Please login instead.");
     }
 
-    // ✅ Assign role automatically (user only)
-    const role = "user";
-    localStorage.setItem("role", role);
+    // Perform signup
+    try {
+      const res = await signup(email, password);
+      if (res.ok && res.user) {
+        const newUser = res.user;
+        const uid = newUser.uid;
 
-    const res = await signup(email, password);
-    if (res.ok) {
-      navigate("/", { replace: true });
-    } else {
-      setError(res.message);
+        // Default role for self-signups
+        const role = "user";
+
+        // Save a simple user document in Firestore for admin listing
+        await setDoc(doc(db, "users", uid), {
+          uid,
+          email: newUser.email,
+          role,
+          createdAt: new Date().toISOString(),
+        });
+
+        // Navigate to login or main page (onAuthStateChanged will update app state)
+        navigate("/", { replace: true });
+      } else {
+        setError(res.message || "Signup failed");
+      }
+    } catch (err) {
+      console.error("Signup error:", err);
+      setError(err.message || "Signup failed");
     }
   };
 
@@ -62,7 +95,11 @@ export default function Signup() {
         <Typography variant="h5" gutterBottom>
           Sign Up
         </Typography>
-        {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
 
         <form onSubmit={handleSubmit}>
           <TextField
