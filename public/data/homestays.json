@@ -1,20 +1,210 @@
 [
   {
     "id": 1,
-    "title": "Cozy Garden Room",
-    "description": "Private room with garden access and local breakfast.",
-    "price": 1200
+    "title": "Goa Beach Villa",
+    "location": "Goa",
+    "description": "Luxury villa with private beach access in North Goa. Minutes from popular beaches.",
+    "price": 5500,
+    "image": "/homestays/goa-villa.jpg",
+    "amenities": ["Private Pool", "Beach Access", "WiFi", "AC", "Kitchen", "Parking"],
+    "rooms": {
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "maxGuests": 6
+    },
+    "rating": 4.8,
+    "reviews": 24,
+    "instant": true,
+    "latitude": 15.5007,
+    "longitude": 73.8330
   },
   {
     "id": 2,
-    "title": "Hillview Cottage",
-    "description": "Small cottage with hill views and guide services.",
-    "price": 2200
+    "title": "Calangute Beach House",
+    "location": "Goa",
+    "description": "Spacious beach house near Calangute Beach with sea view terrace.",
+    "price": 4200,
+    "image": "/homestays/goa-beach-house.jpg",
+    "amenities": ["Sea View", "Terrace", "WiFi", "AC", "Kitchen", "BBQ"],
+    "rooms": {
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 4
+    },
+    "latitude": 15.5440,
+    "longitude": 73.7527,
+    "rating": 4.6,
+    "reviews": 18,
+    "instant": true
   },
   {
     "id": 3,
-    "title": "City Center Studio",
-    "description": "Compact studio near transport and markets.",
-    "price": 1500
+    "title": "Mumbai Sea View Apartment",
+    "location": "Mumbai",
+    "description": "Modern apartment with stunning Marine Drive views.",
+    "price": 6500,
+    "image": "/homestays/mumbai-seaview.jpg",
+    "amenities": ["Sea View", "Gym Access", "WiFi", "AC", "Kitchen", "Parking"],
+    "rooms": {
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 4
+    },
+    "rating": 4.9,
+    "reviews": 32,
+    "instant": true
+  },
+  {
+    "id": 4,
+    "title": "Colaba Heritage Stay",
+    "location": "Mumbai",
+    "description": "Colonial style apartment in historic Colaba district.",
+    "price": 4800,
+    "image": "/homestays/mumbai-heritage.jpg",
+    "amenities": ["Heritage Building", "Balcony", "WiFi", "AC", "Kitchen"],
+    "rooms": {
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "maxGuests": 2
+    },
+    "rating": 4.7,
+    "reviews": 15,
+    "instant": false
+  },
+  {
+    "id": 5,
+    "title": "Delhi Heritage Haveli",
+    "location": "Delhi",
+    "description": "Restored haveli in Old Delhi with traditional architecture.",
+    "price": 3800,
+    "image": "/homestays/delhi-haveli.jpg",
+    "amenities": ["Courtyard", "Traditional Decor", "WiFi", "AC", "Kitchen"],
+    "rooms": {
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 4
+    },
+    "rating": 4.5,
+    "reviews": 28,
+    "instant": false
+  },
+  {
+    "id": 6,
+    "title": "South Delhi Luxury Suite",
+    "location": "Delhi",
+    "description": "Modern luxury suite in green South Delhi neighborhood.",
+    "price": 5200,
+    "image": "/homestays/delhi-luxury.jpg",
+    "amenities": ["Modern Design", "Balcony", "WiFi", "AC", "Kitchen", "Gym"],
+    "rooms": {
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "maxGuests": 2
+    },
+    "rating": 4.8,
+    "reviews": 22,
+    "instant": true
+  },
+  {
+    "id": 7,
+    "title": "Mukteshwar Mountain Cottage",
+    "location": "Mukteshwar",
+    "description": "Cozy cottage with panoramic Himalayan views.",
+    "price": 3200,
+    "image": "/homestays/mukteshwar-cottage.jpg",
+    "amenities": ["Mountain View", "Fireplace", "WiFi", "Kitchen", "Parking"],
+    "rooms": {
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "maxGuests": 4
+    },
+    "rating": 4.9,
+    "reviews": 12,
+    "instant": false
+  },
+  {
+    "id": 8,
+    "title": "Kasol Riverside Camp",
+    "location": "Kasol",
+    "description": "Luxury camping by the Parvati River with mountain views.",
+    "price": 2800,
+    "image": "/homestays/kasol-camp.jpg",
+    "amenities": ["River View", "Bonfire", "WiFi", "Heated Tents", "Dining"],
+    "rooms": {
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "maxGuests": 2
+    },
+    "rating": 4.6,
+    "reviews": 19,
+    "instant": true
+  },
+  {
+    "id": 9,
+    "title": "Gokarna Beach Shack",
+    "location": "Gokarna",
+    "description": "Traditional beach shack steps from Om Beach.",
+    "price": 2200,
+    "image": "/homestays/gokarna-shack.jpg",
+    "amenities": ["Beach Access", "Sea View", "WiFi", "Fan", "Beach Equipment"],
+    "rooms": {
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "maxGuests": 2
+    },
+    "rating": 4.4,
+    "reviews": 16,
+    "instant": true
+  },
+  {
+    "id": 10,
+    "title": "Malvan Seaside Villa",
+    "location": "Malvan",
+    "description": "Beautiful villa near Malvan Beach with garden.",
+    "price": 3500,
+    "image": "/homestays/malvan-villa.jpg",
+    "amenities": ["Garden", "Sea View", "WiFi", "AC", "Kitchen", "Parking"],
+    "rooms": {
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 5
+    },
+    "rating": 4.7,
+    "reviews": 14,
+    "instant": false
+  },
+  {
+    "id": 11,
+    "title": "Coonoor Tea Estate Stay",
+    "location": "Coonoor",
+    "description": "Heritage bungalow in working tea estate with valley views.",
+    "price": 4200,
+    "image": "/homestays/coonoor-estate.jpg",
+    "amenities": ["Valley View", "Tea Garden", "WiFi", "Fireplace", "Kitchen"],
+    "rooms": {
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 4
+    },
+    "rating": 4.8,
+    "reviews": 21,
+    "instant": false
+  },
+  {
+    "id": 12,
+    "title": "Jibhi Forest Retreat",
+    "location": "Jibhi",
+    "description": "Wooden cottage in pine forest with stream views.",
+    "price": 2800,
+    "image": "/homestays/jibhi-retreat.jpg",
+    "amenities": ["Forest View", "Bonfire", "WiFi", "Kitchen", "Trekking"],
+    "rooms": {
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "maxGuests": 3
+    },
+    "rating": 4.7,
+    "reviews": 11,
+    "instant": true
   }
 ]

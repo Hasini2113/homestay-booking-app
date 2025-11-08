@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
         const email = firebaseUser.email || "";
         let role = "user";
 
-        // ✅ Detect role automatically based on email pattern
+        //  Detect role automatically based on email pattern
         if (email.includes("admin")) role = "admin";
         else if (email.includes("host")) role = "host";
 

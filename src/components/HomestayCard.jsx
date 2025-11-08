@@ -1,17 +1,135 @@
-import React from 'react'
-import { Card, CardContent, CardActions, Button, Typography } from '@mui/material'
+import React from 'react';
+import {
+  Card,
+  CardContent,
+  CardActions,
+  CardMedia,
+  Button,
+  Typography,
+  Box,
+  Chip,
+  Rating,
+  Divider,
+  Stack,
+} from '@mui/material';
+import {
+  BedOutlined,
+  BathtubOutlined,
+  PersonOutlineOutlined,
+  FlashOn,
+} from '@mui/icons-material';
 
-export default function HomestayCard({item, onBook}){
+export default function HomestayCard({item, onBook, id}) {
+  const { rooms, amenities, rating, reviews, instant } = item;
+  
   return (
-    <Card sx={{mb:2}}>
-      <CardContent>
-        <Typography variant="h6">{item.title}</Typography>
-        <Typography variant="body2">{item.description}</Typography>
-        <Typography variant="caption">Price: ₹{item.price} / night</Typography>
+    <Card id={id} sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      position: 'relative'
+    }}>
+      {/* Image */}
+      <CardMedia
+        component="img"
+        height="200"
+        image={item.image || 'https://source.unsplash.com/featured/?accommodation'}
+        alt={item.title}
+        sx={{ objectFit: 'cover' }}
+      />
+
+      {/* Instant Book badge */}
+      {instant && (
+        <Chip
+          icon={<FlashOn />}
+          label="Instant Book"
+          color="primary"
+          size="small"
+          sx={{
+            position: 'absolute',
+            top: 12,
+            right: 12,
+            backgroundColor: 'rgba(25, 118, 210, 0.9)',
+          }}
+        />
+      )}
+
+      <CardContent sx={{ flexGrow: 1 }}>
+        {/* Title and Price */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            {item.title}
+          </Typography>
+          <Typography variant="h6" color="primary" sx={{ fontWeight: 600 }}>
+            ₹{item.price}
+          </Typography>
+        </Box>
+
+        {/* Location */}
+        <Typography variant="body2" color="text.secondary" gutterBottom>
+          {item.location}
+        </Typography>
+
+        {/* Description */}
+        <Typography variant="body2" paragraph>
+          {item.description}
+        </Typography>
+
+        {/* Room Details */}
+        <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <BedOutlined fontSize="small" />
+            <Typography variant="body2">{rooms.bedrooms} BR</Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <BathtubOutlined fontSize="small" />
+            <Typography variant="body2">{rooms.bathrooms} BA</Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <PersonOutlineOutlined fontSize="small" />
+            <Typography variant="body2">Up to {rooms.maxGuests}</Typography>
+          </Box>
+        </Stack>
+
+        {/* Amenities */}
+        <Box sx={{ mb: 2 }}>
+          {amenities.slice(0, 3).map((amenity) => (
+            <Chip
+              key={amenity}
+              label={amenity}
+              size="small"
+              sx={{ mr: 0.5, mb: 0.5 }}
+            />
+          ))}
+          {amenities.length > 3 && (
+            <Chip
+              label={`+${amenities.length - 3} more`}
+              size="small"
+              variant="outlined"
+            />
+          )}
+        </Box>
+
+        {/* Rating */}
+        <Divider sx={{ my: 1 }} />
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Rating value={rating} precision={0.1} size="small" readOnly />
+          <Typography variant="body2" color="text.secondary">
+            {rating} ({reviews} reviews)
+          </Typography>
+        </Box>
       </CardContent>
+
       <CardActions>
-        <Button size="small" onClick={()=>onBook(item)}>Book</Button>
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={() => onBook(item)}
+          startIcon={instant && <FlashOn />}
+        >
+          Book Now • ₹{item.price}/night
+        </Button>
       </CardActions>
     </Card>
-  )
+  );
 }
