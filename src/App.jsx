@@ -15,6 +15,7 @@ import Homestays from "./pages/Homestays";
 import Host from "./pages/Host";
 import Booking from "./pages/Booking";
 import Guide from "./pages/Guide";
+import Explore from "./pages/Explore";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -122,16 +123,20 @@ export default function App() {
               {/* 🔓 Public routes */}
               {!user ? (
                 <>
+                  {/* Public landing is Explore when unauthenticated */}
+                  <Route path="/" element={<Explore />} />
+                  <Route path="/explore" element={<Explore />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/forgot-password" element={<ForgotPassword />} />
-                  <Route path="*" element={<Navigate to="/login" replace />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
                 </>
               ) : (
                 <>
                   {/* 🔐 Authenticated routes */}
                   <Route path="/" element={<Home />} />
                   <Route path="/homestays" element={<Homestays />} />
+                  <Route path="/explore" element={<Explore />} />
                   <Route path="/booking" element={<Booking />} />
                   <Route path="/guide" element={<Guide />} />
 

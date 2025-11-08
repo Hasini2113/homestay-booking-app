@@ -9,7 +9,7 @@ import {
   Alert,
   Link,
 } from "@mui/material";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
@@ -18,6 +18,7 @@ export default function Login() {
   const [error, setError] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,11 +43,14 @@ export default function Login() {
           localStorage.setItem(`role_${res.user.uid}`, role);
         }
 
-        // Redirect based on role
+        // Redirect based on role; if unauthenticated user and query params present, go to homestays with params
+        const search = location.search || "";
         if (role === "admin") {
           navigate("/admin", { replace: true });
         } else if (role === "host") {
           navigate("/host", { replace: true });
+        } else if (search) {
+          navigate(`/homestays${search}`, { replace: true, state: { toast: "Logged in successfully" } });
         } else {
           navigate("/", { replace: true });
         }

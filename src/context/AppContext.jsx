@@ -19,6 +19,11 @@ function reducer(state, action){
       localStorage.setItem('darkMode', JSON.stringify(!state.darkMode))
       return {...state, darkMode: !state.darkMode}
     }
+    case 'REMOVE_BOOKING': {
+      const next = state.bookings.filter(booking => booking.id !== action.payload)
+      localStorage.setItem('bookings', JSON.stringify(next))
+      return {...state, bookings: next}
+    }
     default: return state
   }
 }

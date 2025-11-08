@@ -9,7 +9,7 @@ import {
   Alert,
   Link,
 } from "@mui/material";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 import { getFirestore, doc, setDoc } from "firebase/firestore";
@@ -24,6 +24,7 @@ export default function Signup() {
   const [error, setError] = useState("");
   const { signup } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,8 +61,10 @@ export default function Signup() {
           createdAt: new Date().toISOString(),
         });
 
-        // Navigate to login or main page (onAuthStateChanged will update app state)
-        navigate("/", { replace: true });
+  // After signup, if Explore passed search params, go to homestays with those params
+  const search = location.search || "";
+  if (search) navigate(`/homestays${search}`, { replace: true, state: { toast: "Account created successfully" } });
+  else navigate("/", { replace: true });
       } else {
         setError(res.message || "Signup failed");
       }

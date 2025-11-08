@@ -40,6 +40,7 @@ export default function Navbar(){
         </Typography>
 
         <Button color="inherit" component={RouterLink} to="/homestays">Homestays</Button>
+  <Button color="inherit" component={RouterLink} to="/explore">Explore</Button>
         <Button color="inherit" component={RouterLink} to="/guide">Guides</Button>
         <Button color="inherit" component={RouterLink} to="/host">Host</Button>
         <Button color="inherit" component={RouterLink} to="/booking">Bookings</Button>
